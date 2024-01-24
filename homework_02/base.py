@@ -1,5 +1,4 @@
-import exceptions
-
+from homework_02 import exceptions
 from abc import ABC
 
 

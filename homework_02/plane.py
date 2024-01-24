@@ -1,9 +1,8 @@
 """
 создайте класс `Plane`, наследник `Vehicle`
 """
-import exceptions
-
-from base import Vehicle
+from homework_02 import exceptions
+from homework_02.base import Vehicle
 
 
 class Plane(Vehicle):
