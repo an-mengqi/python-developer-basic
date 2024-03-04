@@ -18,7 +18,6 @@ from homework_04.models import User, Post, Session, create_tables
 from sqlalchemy.ext.asyncio import AsyncSession
 from jsonplaceholder_requests import get_users_data, get_posts_data
 from typing import List
-from sqlalchemy import MetaData
 
 
 async def create_users(session: AsyncSession, data: List[dict]):
@@ -27,6 +26,7 @@ async def create_users(session: AsyncSession, data: List[dict]):
                     email=user_parameter['email'])
         session.add(user)
     await session.commit()
+
 
 async def create_posts(session: AsyncSession, data: List[dict]):
     for post_parameters in data:

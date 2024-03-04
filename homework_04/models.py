@@ -49,6 +49,7 @@ association_table = Table(
     Column("post_id", ForeignKey("post_table.id"), primary_key=True),
 )
 
+
 class User(Base):
     __tablename__ = "user_table"
 

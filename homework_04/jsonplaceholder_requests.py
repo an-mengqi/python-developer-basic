@@ -18,6 +18,7 @@ async def get_users_data():
     result = await fetch_json(USERS_DATA_URL)
     return result
 
+
 async def get_posts_data():
     result = await fetch_json(POSTS_DATA_URL)
     return result
