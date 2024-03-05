@@ -47,6 +47,10 @@ async def async_main():
             session,
             user_fetch
         )
+        await create_posts(
+            session,
+            posts_fetch
+        )
 
 
 def main():
