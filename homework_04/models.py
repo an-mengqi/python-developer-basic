@@ -15,17 +15,12 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import relationship
-from pathlib import Path
 from sqlalchemy import Column, String, Text
 from sqlalchemy.ext.asyncio import (
     create_async_engine,
     async_sessionmaker
 )
-import os
 
-
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
-BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = "postgresql+asyncpg://user:example@localhost:5432/blog"
 DB_ECHO = False
 
