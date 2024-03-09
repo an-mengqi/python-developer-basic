@@ -8,6 +8,8 @@
 создайте связи relationship между моделями: User.posts и Post.user
 """
 from __future__ import annotations
+
+import os
 from typing import List
 from sqlalchemy import ForeignKey
 from sqlalchemy import Table
@@ -21,10 +23,10 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker
 )
 
-DB_PATH = "postgresql+asyncpg://user:example@localhost:5432/blog"
+PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://user:example@localhost:5432/blog"
 DB_ECHO = False
 
-async_engine = create_async_engine(DB_PATH, echo=DB_ECHO,)
+async_engine = create_async_engine(PG_CONN_URI)
 
 Session = async_sessionmaker(
     bind=async_engine,
@@ -49,10 +51,10 @@ class User(Base):
     __tablename__ = "user_table"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name = Column(String(50), nullable=False, unique=True)
-    username = Column(String(30), nullable=False, unique=True)
-    email = Column(String, nullable=True, unique=True)
-    posts: Mapped[List[Post]] = relationship(secondary=association_table, back_populates="users")
+    name = Column(String(50), nullable=False)
+    username = Column(String(30), nullable=False)
+    email = Column(String, nullable=False)
+    posts: Mapped[List[Post]] = relationship(secondary=association_table, back_populates="user")
 
     def __repr__(self):
         return str(self)
@@ -73,8 +75,8 @@ class Post(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user_table.id"))
     title = Column(String(100), nullable=False, default="", server_default="",)
-    body = Column(Text, nullable=False)
-    users: Mapped[List[User]] = relationship(secondary=association_table, back_populates="posts")
+    body = Column(Text, nullable=False, default="", server_default="",)
+    user: Mapped[List[User]] = relationship(secondary=association_table, back_populates="posts")
 
     def __repr__(self):
         return str(self)
