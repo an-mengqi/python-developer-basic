@@ -54,7 +54,7 @@ class User(Base):
     name = Column(String(50), nullable=False)
     username = Column(String(30), nullable=False)
     email = Column(String, nullable=False)
-    posts: Mapped[List[Post]] = relationship(secondary=association_table, back_populates="user")
+    posts: Mapped[List["Post"]] = relationship(back_populates="user")
 
     def __repr__(self):
         return str(self)
@@ -76,7 +76,7 @@ class Post(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("user_table.id"))
     title = Column(String(100), nullable=False, default="", server_default="",)
     body = Column(Text, nullable=False, default="", server_default="",)
-    user: Mapped[List[User]] = relationship(secondary=association_table, back_populates="posts")
+    user: Mapped[List["User"]] = relationship(back_populates="posts")
 
     def __repr__(self):
         return str(self)
