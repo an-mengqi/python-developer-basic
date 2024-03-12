@@ -55,7 +55,7 @@ def check_data_match(items_from_db, items_from_remote, args_mapping: dict):
 async def test_main(users_data, posts_data):
     await module_main.async_main()
 
-    stmt_query_users = select(module_models.Player).options(selectinload(module_models.Player.posts))
+    stmt_query_users = select(module_models.User).options(selectinload(module_models.User.posts))
     stmt_query_posts = select(module_models.Post).options(joinedload(module_models.Post.user))
 
     users = []
