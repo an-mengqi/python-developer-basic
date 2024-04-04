@@ -36,3 +36,24 @@
 - Добавлены вьюшки `/` и `/about/`
 - Подключены и применены стили Bootstrap
 - В базовый шаблон добавлена навигационная панель
+
+**Домашнее задание №5** - Взаимодействие между контейнерами
+- Создано приложение (на Flask + bootstrap), взаимодействующее с БД (SQLAlchemy)
+- Приложение и БД запускаются с помощью docker-compose.
+Как запустить контейнер: \
+из директории python-developer-basic/homework_06_db_and_flask выполнить команду: \
+`docker compose up --build app` \
+Если возникнут проблемы с прогрузкой страницы Products, необходимо зайти внутрь запущенного контейнера: \
+`docker compose exec -it app bash` \
+и обновить бд: \
+`flask db upgrade` \
+Выйти из контейнера: \
+`exit`
+- Скриншоты страниц приложения:
+![My Image](images/welcome_screen.png)
+![My Image](images/product_list.png)
+![My Image](images/add_product_page.png)
+![My Image](images/add_product_success.png)
+![My Image](images/product_detail.png)
+![My Image](images/confirm_delete_product.png)
+![My Image](images/delete_success.png)
