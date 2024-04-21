@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <h2>The Wall of Honor</h2>
+    <h3>People ({{ people_qty }})</h3>
+    <ul>
+        {% for item in people %}
+            <li>
+                {{ item.name }} ({{ item.age }})
+            </li>
+        {% endfor %}
+    </ul>
+    <h4>First</h4>
+    <p>{{ people.0.name }}</p>
+{% endblock %}myapp

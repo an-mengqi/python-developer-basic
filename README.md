@@ -57,3 +57,8 @@
 ![My Image](images/product_detail.png)
 ![My Image](images/confirm_delete_product.png)
 ![My Image](images/delete_success.png)
+
+**Домашнее задание №6** - Django проект
+- Создано приложние "Доска почета" на Django с моделями и миграциями
+- Приложение запускается из папки homework-07 командой: \
+`python manage.py runserver`
