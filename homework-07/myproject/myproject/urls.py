@@ -20,6 +20,7 @@ from myproject import settings
 
 urlpatterns = [
     path('', myapp_views.index),
+    path('send/', myapp_views.send_mail),
 
     path('admin/', admin.site.urls),
 ]
