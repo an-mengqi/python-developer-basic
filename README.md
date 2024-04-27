@@ -64,3 +64,12 @@
 `python manage.py runserver`
 
 **Домашнее задание №8** - Django Generics
+- Доработно приложение из предыдущего ДЗ для отображения моделей на страницах, добавлены страницы ListView и DetailView.
+- Данные отображаются на страницах
+- Есть кнопка для возвращения к списку
+- Скриншоты страниц приложения:
+![My Image](images/page_1.png)
+![My Image](images/page_2.png)
+![My Image](images/person_detail_by_id.png)
+![My Image](images/person_create.png)
+

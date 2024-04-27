@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+Person {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<h3>{{ person.name }}</h3>
+<ul>
+    {% for achievement in object.achievement_set.all %}
+        <li>{{ achievement }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

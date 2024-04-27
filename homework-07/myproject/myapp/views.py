@@ -1,21 +1,28 @@
 import time
 
 from django.shortcuts import render
+from django.views.generic import DetailView, ListView, CreateView
 from myapp.models import Person
 from . import tasks
 # Create your views here.
 
 
-def index(request):
-    people_qty = Person.objects.count()
+class PageTitleMixin:
+    page_title = 'The Wall of Honor'
 
-    people = Person.objects.all()
-    context = {
-        'people': people,
-        'people_qty': people_qty,
-    }
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
 
-    return render(request, "myapp/index.html", context=context)
+        # print(f'{context=}')
+        context['page_title'] = self.page_title
+
+        return context
+
+
+class PersonList(PageTitleMixin, ListView):
+    page_title = 'People'
+    model = Person
+    paginate_by = 3
 
 
 def send_mail(request):
@@ -38,3 +45,13 @@ def send_mail(request):
         'task_id': task_id
     }
     return render(request, 'myapp/send_mail.html', context=context)
+
+
+class PersonCreate(CreateView):
+    model = Person
+    fields = '__all__'
+    success_url = '/'
+
+
+class PersonDetail(PageTitleMixin, DetailView):
+    model = Person

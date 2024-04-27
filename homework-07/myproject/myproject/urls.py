@@ -19,7 +19,9 @@ import myapp.views as myapp_views
 from myproject import settings
 
 urlpatterns = [
-    path('', myapp_views.index),
+    path('', myapp_views.PersonList.as_view()),
+    path('person/create/', myapp_views.PersonCreate.as_view()),
+    path('person/<int:pk>/', myapp_views.PersonDetail.as_view()),
     path('send/', myapp_views.send_mail),
 
     path('admin/', admin.site.urls),
