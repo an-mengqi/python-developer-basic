@@ -37,4 +37,4 @@ prompt-toolkit==3.0.43
 tzdata==2024.1
 vine==5.1.0
 wcwidth==0.2.13
-redis-5.0.4
+redis==5.0.4
